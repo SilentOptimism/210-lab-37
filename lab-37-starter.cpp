@@ -74,12 +74,34 @@ void menu(){
 
 void addKey(){
     string value;
-    cout << "Input Key to add:";
+    cout << "Input value to add:";
     cin >> value;
 
     int valueSum = sum_ascii(value);
 
+    hash_table[valueSum].push_back(value);
+}
 
+void removeKey(){
+    string value;
+    cout << "Input value to remove:";
+    cin >> value;
+
+    int valueSum = sum_ascii(value);
+
+    hash_table[valueSum].remove(value);
+}
+
+void modifyKey(){
+    string oldVal;
+    string newVal;
+    cout << "Input old Value:";
+    cin >> oldVal;
+    cout << "Input new Value:";
+    cin >> newVal;
+
+
+    hash_table[valueSum];
 }
 
 /// @brief Prints first 100 entries
