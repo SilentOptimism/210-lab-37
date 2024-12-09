@@ -39,6 +39,10 @@ int main() {
     return 0;
 }
 
+int gen_hash_index(){
+
+}
+
 int sum_ascii(string input){
     int sum = 0;
 
