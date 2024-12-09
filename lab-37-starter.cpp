@@ -1,10 +1,19 @@
 #include <iostream>
 #include <fstream>
+#include <map>
+#include <list>
 
 using namespace std;
 
 int sum_ascii(string);
 int sum_total();
+
+// (keys) that are integers
+// (values) that are std::lists
+map<int, list<int>> hash_table;
+
+// The key in the map is an int (THE HASH INDEX)
+// The value in the map is an std::list containing our 12- char codes
 
 int main() {
     char a = 'A';
@@ -39,8 +48,28 @@ int main() {
     return 0;
 }
 
+/// @brief It reads the codes from the file, Generates a hash index for each code, Inputs the code along with its hash index into the map
+/// @return returns the total ascii
 int gen_hash_index(){
+    ifstream fin;
+    fin.open("lab-37-data.txt");
 
+    if(!fin){
+        cout << "File opening error" << endl;
+        return -1;
+    }
+
+    int total = 0;
+
+    while (fin){
+        string ascii;
+        getline(fin, ascii);
+
+        // Checks if there was a file error during pulling the ascii
+        if(fin)  {total += sum_ascii(ascii);}
+    }
+
+    return total;
 }
 
 int sum_ascii(string input){
