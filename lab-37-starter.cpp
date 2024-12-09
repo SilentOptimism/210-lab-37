@@ -19,7 +19,13 @@ int main() {
     cout << endl;
 
     cout << "AB" << endl;
+    cout << "65+66 = 131" << endl;
     cout << "Sum: "<< sum_ascii("AB") << endl;
+
+    cout << endl;
+
+    cout << "ABCDEFG" << endl;
+    cout << "Sum: "<< sum_ascii("ABCDEFG") << endl;
     
 
     return 0;
@@ -29,8 +35,7 @@ int sum_ascii(string input){
     int sum = 0;
 
     for(char c: input){
-        sum += c;
-
+        sum += c; // Implicitely converts char to int value and sums them
     }
 
     return sum;
