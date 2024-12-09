@@ -22,16 +22,67 @@ int main() {
 
 
     gen_hash_index();
-    print();
+    menu();
 
     return 0;
 }
 
 void menu(){
-    cout << "Hash Table 2" << endl;
+    bool exit = false;
+
+    while(!exit){
+        char input;
+
+        cout << "Hash Table 2" << endl;
+        cout << endl;
+        cout << "1) Print first 100 entries" << endl;
+        cout << "2) Search for a key" << endl;
+        cout << "3) Add a key" << endl;
+        cout << "4) Remove a key" << endl;
+        cout << "5) Modify a key" << endl;
+        cout << "6) Exit" << endl;
+        cout << endl;
+        cout << "Input (1-6) for a valid choice: ";
+        cin >> input;
+
+        switch (input)
+        {
+        case '1':
+            print();
+            break;
+        case '2':
+            /* code */
+            break;
+        case '3':
+            /* code */
+            break;
+        case '4':
+            /* code */
+            break;
+        case '5':
+            /* code */
+            break;
+        case '6':
+            exit = true;
+            break;
+        default:
+            cout << "Invalid input" << endl;
+            break;
+        }
+    }
+}
+
+void addKey(){
+    string value;
+    cout << "Input Key to add:";
+    cin >> value;
+
+    int valueSum = sum_ascii(value);
+
 
 }
 
+/// @brief Prints first 100 entries
 void print(){
     map<int, list<string>>::iterator start = hash_table.begin();
     map<int, list<string>>::iterator end = hash_table.end();
