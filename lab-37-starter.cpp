@@ -7,10 +7,11 @@ using namespace std;
 
 int sum_ascii(string);
 int sum_total();
+void gen_hash_index();
 
 // (keys) that are integers
 // (values) that are std::lists
-map<int, list<int>> hash_table;
+map<int, list<string>> hash_table;
 
 // The key in the map is an int (THE HASH INDEX)
 // The value in the map is an std::list containing our 12- char codes
@@ -43,6 +44,24 @@ int main() {
 
     cout << "The sum of all ASCII values in the entire file" << endl;
     cout << sum_total() << endl;
+
+    gen_hash_index();
+
+    int print_count = 10;
+
+
+    map<int, list<string>>::iterator start = hash_table.begin();
+    map<int, list<string>>::iterator end = hash_table.end();
+
+    while(print_count != 0){
+        for(string ascii: (*start).second){
+            cout << "Ascii: "<< ascii << " Hash: " << (*start).first << endl;
+        }
+        start++;
+        print_count--;
+    }
+
+
     
 
     return 0;
@@ -50,26 +69,27 @@ int main() {
 
 /// @brief It reads the codes from the file, Generates a hash index for each code, Inputs the code along with its hash index into the map
 /// @return returns the total ascii
-int gen_hash_index(){
+void gen_hash_index(){
     ifstream fin;
     fin.open("lab-37-data.txt");
 
     if(!fin){
         cout << "File opening error" << endl;
-        return -1;
     }
+    else{
+        int total = 0;
 
-    int total = 0;
+        while (fin){
+            int asciiSum = 0;
+            string ascii;
+            getline(fin, ascii);
 
-    while (fin){
-        string ascii;
-        getline(fin, ascii);
-
-        // Checks if there was a file error during pulling the ascii
-        if(fin)  {total += sum_ascii(ascii);}
+            // Checks if there was a file error during pulling the ascii
+            if(fin) {asciiSum = sum_ascii(ascii);}
+            hash_table[asciiSum].push_back(ascii);
+        }
+        fin.close();
     }
-
-    return total;
 }
 
 int sum_ascii(string input){
@@ -81,7 +101,6 @@ int sum_ascii(string input){
 
     return sum;
 }
-
 int sum_total(){
     ifstream fin;
     fin.open("lab-37-data.txt");
@@ -100,6 +119,7 @@ int sum_total(){
         // Checks if there was a file error during pulling the ascii
         if(fin)  {total += sum_ascii(ascii);}
     }
+    fin.close();
 
     return total;
 }
