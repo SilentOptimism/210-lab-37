@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 #include <map>
 #include <list>
 
@@ -8,6 +9,7 @@ using namespace std;
 int sum_ascii(string);
 int sum_total();
 void gen_hash_index();
+void print();
 
 // (keys) that are integers
 // (values) that are std::lists
@@ -42,29 +44,30 @@ int main() {
 
     cout << endl;
 
-    cout << "The sum of all ASCII values in the entire file" << endl;
-    cout << sum_total() << endl;
-
     gen_hash_index();
+    print();
 
-    int print_count = 10;
+    return 0;
+}
+
+void print(){
+
 
 
     map<int, list<string>>::iterator start = hash_table.begin();
     map<int, list<string>>::iterator end = hash_table.end();
 
-    while(print_count != 0){
-        for(string ascii: (*start).second){
-            cout << "Ascii: "<< ascii << " Hash: " << (*start).first << endl;
+    int count = 0;
+    
+    while(count <= 10){
+        for(const string& value: (start->second)){
+            cout << "key: " << (start->first) << " value: " << value << endl;
         }
         start++;
-        print_count--;
+        count++;
     }
 
 
-    
-
-    return 0;
 }
 
 /// @brief It reads the codes from the file, Generates a hash index for each code, Inputs the code along with its hash index into the map
@@ -77,8 +80,6 @@ void gen_hash_index(){
         cout << "File opening error" << endl;
     }
     else{
-        int total = 0;
-
         while (fin){
             int asciiSum = 0;
             string ascii;
