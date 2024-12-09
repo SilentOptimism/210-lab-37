@@ -1,7 +1,10 @@
 #include <iostream>
+#include <fstream>
+
 using namespace std;
 
 int sum_ascii(string);
+int sum_total();
 
 int main() {
     char a = 'A';
@@ -26,6 +29,11 @@ int main() {
 
     cout << "ABCDEFG" << endl;
     cout << "Sum: "<< sum_ascii("ABCDEFG") << endl;
+
+    cout << endl;
+
+    cout << "The sum of all ASCII values in the entire file" << endl;
+    cout << sum_total() << endl;
     
 
     return 0;
@@ -39,6 +47,28 @@ int sum_ascii(string input){
     }
 
     return sum;
+}
+
+int sum_total(){
+    ifstream fin;
+    fin.open("lab-37-data.txt");
+
+    if(!fin){
+        cout << "File opening error" << endl;
+        return -1;
+    }
+
+    int total = 0;
+
+    while (fin){
+        string ascii;
+        getline(fin, ascii);
+
+        // Checks if there was a file error during pulling the ascii
+        if(fin)  {total += sum_ascii(ascii);}
+    }
+
+    return total;
 }
 
 /* 
