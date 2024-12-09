@@ -88,8 +88,7 @@ void searchKey(){
     for(string val : hash_table[valueSum]){
         if(val == value){
             cout << "Value found at key:" << valueSum << endl;
-
-            break;
+            return;
         }
     }
     cout << "Value not in hashtable" << endl;
@@ -139,12 +138,11 @@ void print(){
     
     while(count <= 100){
         for(const string& value: (start->second)){
-            cout << "key: " << (start->first) << " value: " << value << endl;
+            cout << "Entry: " << count <<" key: " << (start->first) << " value: " << value << endl;
+            count++;
         }
         start++;
-        count++;
     }
-
 
 }
 
@@ -180,6 +178,7 @@ int sum_ascii(string input){
 
     return sum;
 }
+
 int sum_total(){
     ifstream fin;
     fin.open("lab-37-data.txt");
