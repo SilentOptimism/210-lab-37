@@ -7,9 +7,15 @@
 using namespace std;
 
 int sum_ascii(string);
-int sum_total();
 void gen_hash_index();
 void print();
+
+void menu();
+
+void addKey();
+void removeKey();
+void searchKey();
+void modifyKey();
 
 // (keys) that are integers
 // (values) that are std::lists
@@ -51,16 +57,16 @@ void menu(){
             print();
             break;
         case '2':
-            /* code */
+            searchKey();
             break;
         case '3':
-            /* code */
+            addKey();
             break;
         case '4':
-            /* code */
+            removeKey();
             break;
         case '5':
-            /* code */
+            modifyKey();
             break;
         case '6':
             exit = true;
@@ -72,13 +78,29 @@ void menu(){
     }
 }
 
+void searchKey(){
+    string value;
+    cout << "Input value to Search:";
+    cin >> value;
+
+    int valueSum = sum_ascii(value);
+
+    for(string val : hash_table[valueSum]){
+        if(val == value){
+            cout << "Value found at key:" << valueSum << endl;
+
+            break;
+        }
+    }
+    cout << "Value not in hashtable" << endl;
+}
+
 void addKey(){
     string value;
     cout << "Input value to add:";
     cin >> value;
 
     int valueSum = sum_ascii(value);
-
     hash_table[valueSum].push_back(value);
 }
 
@@ -88,7 +110,6 @@ void removeKey(){
     cin >> value;
 
     int valueSum = sum_ascii(value);
-
     hash_table[valueSum].remove(value);
 }
 
@@ -100,8 +121,13 @@ void modifyKey(){
     cout << "Input new Value:";
     cin >> newVal;
 
+    // Inserts new value
+    int newValSum = sum_ascii(newVal);
+    hash_table[newValSum].push_back(newVal);
 
-    hash_table[valueSum];
+    // Removes old value
+    int oldValSum = sum_ascii(oldVal);
+    hash_table[oldValSum].remove(oldVal);
 }
 
 /// @brief Prints first 100 entries
