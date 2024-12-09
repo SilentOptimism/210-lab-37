@@ -59,7 +59,7 @@ void print(){
 
     int count = 0;
     
-    while(count <= 10){
+    while(count <= 100){
         for(const string& value: (start->second)){
             cout << "key: " << (start->first) << " value: " << value << endl;
         }
