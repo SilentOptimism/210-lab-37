@@ -61,10 +61,10 @@ void print(){
     
     while(count <= 100){
         for(const string& value: (start->second)){
-            cout << "key: " << (start->first) << " value: " << value << endl;
+            cout <<"Entry: " << count <<  " key: " << (start->first) << " value: " << value << endl;
+            count++;
         }
         start++;
-        count++;
     }
 
 
@@ -102,28 +102,7 @@ int sum_ascii(string input){
 
     return sum;
 }
-int sum_total(){
-    ifstream fin;
-    fin.open("lab-37-data.txt");
 
-    if(!fin){
-        cout << "File opening error" << endl;
-        return -1;
-    }
-
-    int total = 0;
-
-    while (fin){
-        string ascii;
-        getline(fin, ascii);
-
-        // Checks if there was a file error during pulling the ascii
-        if(fin)  {total += sum_ascii(ascii);}
-    }
-    fin.close();
-
-    return total;
-}
 
 /* 
 These targets are present in the dataset and can be used for testing:
