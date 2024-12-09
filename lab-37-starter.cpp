@@ -19,30 +19,7 @@ map<int, list<string>> hash_table;
 // The value in the map is an std::list containing our 12- char codes
 
 int main() {
-    char a = 'A';
-    cout << a << endl;
-    cout << (int) a << endl;
-    cout << "sum: "<< sum_ascii("A") << endl;
 
-    cout << endl;
-
-    int b = 66;
-    cout << b << endl;
-    cout << (char) b << endl;
-    cout << "sum: "<< sum_ascii("B") << endl;
-
-    cout << endl;
-
-    cout << "AB" << endl;
-    cout << "65+66 = 131" << endl;
-    cout << "Sum: "<< sum_ascii("AB") << endl;
-
-    cout << endl;
-
-    cout << "ABCDEFG" << endl;
-    cout << "Sum: "<< sum_ascii("ABCDEFG") << endl;
-
-    cout << endl;
 
     gen_hash_index();
     print();
@@ -50,10 +27,12 @@ int main() {
     return 0;
 }
 
+void menu(){
+    cout << "Hash Table 2" << endl;
+
+}
+
 void print(){
-
-
-
     map<int, list<string>>::iterator start = hash_table.begin();
     map<int, list<string>>::iterator end = hash_table.end();
 
